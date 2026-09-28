@@ -16,15 +16,44 @@ body {
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
+/* === ШАПКА === */
 .header {
     position: sticky; top: 0; background: #fff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100;
 }
 .header__inner {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 15px 20px;
+    padding: 12px 20px;
 }
-.logo { font-size: 22px; font-weight: 700; }
+
+/* === ЛОГОТИП === */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #2b2b2b;
+    transition: transform 0.2s;
+}
+.logo:hover { transform: scale(1.02); }
+.logo__img {
+    height: 52px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 3px 6px rgba(214, 51, 132, 0.2));
+}
+.logo__text {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #d63384, #b02a6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
 .nav a { margin: 0 12px; color: #2b2b2b; text-decoration: none; font-weight: 500; }
 .nav a:hover { color: #d63384; }
 
@@ -79,19 +108,120 @@ body {
 .form-message.success { color: #2e7d32; }
 .form-message.error { color: #c62828; }
 
+/* === ВЫБОР СТРАНЫ + ТЕЛЕФОН === */
+.phone-row {
+    display: flex;
+    gap: 8px;
+}
+.country-picker {
+    position: relative;
+    flex-shrink: 0;
+}
+.country-picker__btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    height: 100%;
+    min-height: 52px;
+    transition: border-color 0.2s;
+}
+.country-picker__btn:hover,
+.country-picker__btn:focus {
+    outline: none;
+    border-color: #d63384;
+}
+.country-picker__btn .flag {
+    width: 24px;
+    height: 17px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.country-picker__btn .arrow {
+    font-size: 10px;
+    color: #999;
+    margin-left: 2px;
+}
+.country-picker__list {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 240px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    padding: 6px;
+    display: none;
+    z-index: 50;
+    max-height: 320px;
+    overflow-y: auto;
+}
+.country-picker--open .country-picker__list {
+    display: block;
+    animation: dropdownIn 0.15s ease;
+}
+@keyframes dropdownIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.country-picker__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.15s;
+}
+.country-picker__item:hover {
+    background: #fce4ec;
+}
+.country-picker__item .flag {
+    width: 24px;
+    height: 17px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.country-picker__item .code {
+    margin-left: auto;
+    color: #999;
+    font-size: 14px;
+}
+.phone-row input[type="tel"] {
+    flex: 1;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+}
+.phone-row input[type="tel"]:focus {
+    outline: none;
+    border-color: #d63384;
+}
+
 .footer {
     padding: 40px 0; background: #2b2b2b;
     color: #fff; text-align: center;
 }
 
-/* Модальное окно */
+/* === МОДАЛЬНОЕ ОКНО === */
 .modal {
     position: fixed; inset: 0;
     display: none; align-items: center; justify-content: center;
     z-index: 1000;
 }
 .modal--visible { display: flex; }
-
 .modal__overlay {
     position: absolute; inset: 0;
     background: rgba(0,0,0,0.5);
@@ -121,122 +251,9 @@ body {
     .nav { display: none; }
     .hero h1 { font-size: 28px; }
     .section h2 { font-size: 24px; }
+    .logo__img { height: 40px; }
+    .logo__text { font-size: 18px; }
 }
-.phone-row {
-    display: flex;
-    gap: 8px;
-}
-
-.country-picker {
-    position: relative;
-    flex-shrink: 0;
-}
-
-.country-picker__btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 14px 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 15px;
-    font-family: inherit;
-    cursor: pointer;
-    height: 100%;
-    min-height: 52px;
-    transition: border-color 0.2s;
-}
-
-.country-picker__btn:hover,
-.country-picker__btn:focus {
-    outline: none;
-    border-color: #d63384;
-}
-
-.country-picker__btn .flag {
-    width: 24px;
-    height: 17px;
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.country-picker__btn .arrow {
-    font-size: 10px;
-    color: #999;
-    margin-left: 2px;
-}
-
-.country-picker__list {
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0;
-    min-width: 220px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    padding: 6px;
-    display: none;
-    z-index: 50;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.country-picker--open .country-picker__list {
-    display: block;
-    animation: dropdownIn 0.15s ease;
-}
-
-@keyframes dropdownIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-.country-picker__item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: background 0.15s;
-}
-
-.country-picker__item:hover {
-    background: #fce4ec;
-}
-
-.country-picker__item .flag {
-    width: 24px;
-    height: 17px;
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.country-picker__item .code {
-    margin-left: auto;
-    color: #999;
-    font-size: 14px;
-}
-
-.phone-row input[type="tel"] {
-    flex: 1;
-    min-width: 0;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 15px;
-    font-family: inherit;
-}
-
-.phone-row input[type="tel"]:focus {
-    outline: none;
-    border-color: #d63384;
-}
-
 @media (max-width: 500px) {
     .phone-row { flex-direction: column; }
     .country-picker,
@@ -249,7 +266,10 @@ body {
 
 <header class="header">
     <div class="container header__inner">
-        <div class="logo">💅 Nail Studio</div>
+        <a href="#" class="logo">
+            <img src="images/logo.png" alt="Nail Studio" class="logo__img">
+            <span class="logo__text">Nail Studio</span>
+        </a>
         <nav class="nav">
             <a href="#services">Услуги</a>
             <a href="#gallery">Работы</a>
@@ -311,48 +331,49 @@ body {
     <div class="container">
         <h2>Запись онлайн</h2>
 
-        <!-- ⚠️ ЗАМЕНИ ССЫЛКУ НА СВОЮ ИЗ FORMSPREE -->
-        <form id="bookingForm" class="form" action="https://formspree.io/f/xwlpakbj" method="POST">
+        <form id="bookingForm" class="form">
             <input type="text" name="name" placeholder="Ваше имя" required>
+
             <div class="phone-row">
-    <div class="country-picker" id="countryPicker">
-        <button type="button" class="country-picker__btn" id="countryBtn">
-            <img src="https://flagcdn.com/w40/by.png" class="flag" alt="BY" id="currentFlag">
-            <span id="currentCode">+375</span>
-            <span class="arrow">▾</span>
-        </button>
-        <div class="country-picker__list" id="countryList">
-            <div class="country-picker__item" data-value="+375" data-mask="+375 (__) ___-__-__" data-pattern="^\+375\d{9}$" data-flag="by">
-                <img src="https://flagcdn.com/w40/by.png" class="flag" alt="BY"> Беларусь <span class="code">+375</span>
+                <div class="country-picker" id="countryPicker">
+                    <button type="button" class="country-picker__btn" id="countryBtn">
+                        <img src="https://flagcdn.com/w40/by.png" class="flag" alt="BY" id="currentFlag">
+                        <span id="currentCode">+375</span>
+                        <span class="arrow">▾</span>
+                    </button>
+                    <div class="country-picker__list" id="countryList">
+                        <div class="country-picker__item" data-value="+375" data-mask="+375 (__) ___-__-__" data-pattern="^\+375\d{9}$" data-flag="by">
+                            <img src="https://flagcdn.com/w40/by.png" class="flag" alt="BY"> Беларусь <span class="code">+375</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$" data-flag="ru">
+                            <img src="https://flagcdn.com/w40/ru.png" class="flag" alt="RU"> Россия <span class="code">+7</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+380" data-mask="+380 (__) ___-__-__" data-pattern="^\+380\d{9}$" data-flag="ua">
+                            <img src="https://flagcdn.com/w40/ua.png" class="flag" alt="UA"> Украина <span class="code">+380</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$" data-flag="kz">
+                            <img src="https://flagcdn.com/w40/kz.png" class="flag" alt="KZ"> Казахстан <span class="code">+7</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+995" data-mask="+995 (___) ___-___" data-pattern="^\+995\d{9}$" data-flag="ge">
+                            <img src="https://flagcdn.com/w40/ge.png" class="flag" alt="GE"> Грузия <span class="code">+995</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+373" data-mask="+373 (__) ___-___" data-pattern="^\+373\d{8}$" data-flag="md">
+                            <img src="https://flagcdn.com/w40/md.png" class="flag" alt="MD"> Молдова <span class="code">+373</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+371" data-mask="+371 (___) ___-__" data-pattern="^\+371\d{8}$" data-flag="lv">
+                            <img src="https://flagcdn.com/w40/lv.png" class="flag" alt="LV"> Латвия <span class="code">+371</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+370" data-mask="+370 (___) ___-__" data-pattern="^\+370\d{8}$" data-flag="lt">
+                            <img src="https://flagcdn.com/w40/lt.png" class="flag" alt="LT"> Литва <span class="code">+370</span>
+                        </div>
+                        <div class="country-picker__item" data-value="+372" data-mask="+372 (___) ___-__" data-pattern="^\+372\d{7,8}$" data-flag="ee">
+                            <img src="https://flagcdn.com/w40/ee.png" class="flag" alt="EE"> Эстония <span class="code">+372</span>
+                        </div>
+                    </div>
+                </div>
+                <input type="tel" id="phoneInput" name="phone" placeholder="+375 (__) ___-__-__" required>
             </div>
-            <div class="country-picker__item" data-value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$" data-flag="ru">
-                <img src="https://flagcdn.com/w40/ru.png" class="flag" alt="RU"> Россия <span class="code">+7</span>
-            </div>
-            <div class="country-picker__item" data-value="+380" data-mask="+380 (__) ___-__-__" data-pattern="^\+380\d{9}$" data-flag="ua">
-                <img src="https://flagcdn.com/w40/ua.png" class="flag" alt="UA"> Украина <span class="code">+380</span>
-            </div>
-            <div class="country-picker__item" data-value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$" data-flag="kz">
-                <img src="https://flagcdn.com/w40/kz.png" class="flag" alt="KZ"> Казахстан <span class="code">+7</span>
-            </div>
-            <div class="country-picker__item" data-value="+995" data-mask="+995 (___) ___-___" data-pattern="^\+995\d{9}$" data-flag="ge">
-                <img src="https://flagcdn.com/w40/ge.png" class="flag" alt="GE"> Грузия <span class="code">+995</span>
-            </div>
-            <div class="country-picker__item" data-value="+373" data-mask="+373 (__) ___-___" data-pattern="^\+373\d{8}$" data-flag="md">
-                <img src="https://flagcdn.com/w40/md.png" class="flag" alt="MD"> Молдова <span class="code">+373</span>
-            </div>
-            <div class="country-picker__item" data-value="+371" data-mask="+371 (___) ___-__" data-pattern="^\+371\d{8}$" data-flag="lv">
-                <img src="https://flagcdn.com/w40/lv.png" class="flag" alt="LV"> Латвия <span class="code">+371</span>
-            </div>
-            <div class="country-picker__item" data-value="+370" data-mask="+370 (___) ___-__" data-pattern="^\+370\d{8}$" data-flag="lt">
-                <img src="https://flagcdn.com/w40/lt.png" class="flag" alt="LT"> Литва <span class="code">+370</span>
-            </div>
-            <div class="country-picker__item" data-value="+372" data-mask="+372 (___) ___-__" data-pattern="^\+372\d{7,8}$" data-flag="ee">
-                <img src="https://flagcdn.com/w40/ee.png" class="flag" alt="EE"> Эстония <span class="code">+372</span>
-            </div>
-        </div>
-    </div>
-    <input type="tel" id="phoneInput" name="phone" placeholder="+375 (__) ___-__-__" required>
-</div>
+
             <select name="service" required>
                 <option value="">Выберите услугу</option>
                 <option>Маникюр</option>
@@ -396,7 +417,7 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // ⚠️ ВСТАВЬ СВОЮ ССЫЛКУ ИЗ FORMSPREE
+    // ⚠️ ЗАМЕНИ НА СВОЮ ССЫЛКУ ИЗ FORMSPREE
     const FORMSPREE_URL = 'https://formspree.io/f/xwlpakbj';
 
     const dateInput = document.querySelector('input[name="date"]');
@@ -407,7 +428,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const msg = document.getElementById('formMessage');
     const modal = document.getElementById('successModal');
 
-    // === Выбор страны ===
     const picker = document.getElementById('countryPicker');
     const countryBtn = document.getElementById('countryBtn');
     const currentFlag = document.getElementById('currentFlag');
@@ -421,7 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
         flag: 'by'
     };
 
-    // Открытие / закрытие списка стран
     countryBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         picker.classList.toggle('country-picker--open');
@@ -433,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Выбор страны из списка
     document.querySelectorAll('.country-picker__item').forEach(item => {
         item.addEventListener('click', () => {
             currentCountry = {
@@ -442,28 +460,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 pattern: item.dataset.pattern,
                 flag: item.dataset.flag
             };
-
-            currentFlag.src = `https://flagcdn.com/w40/${currentCountry.flag}.png`;
+            currentFlag.src = 'https://flagcdn.com/w40/' + currentCountry.flag + '.png';
             currentFlag.alt = currentCountry.flag.toUpperCase();
             currentCode.textContent = currentCountry.value;
             phoneInput.placeholder = currentCountry.mask;
             phoneInput.value = '';
             phoneInput.focus();
-
             picker.classList.remove('country-picker--open');
         });
     });
 
-    // Автоподстановка кода страны при вводе
     phoneInput.addEventListener('input', () => {
         const code = currentCountry.value;
         let digits = phoneInput.value.replace(/\D/g, '');
         const codeDigits = code.replace('+', '');
-
         if (digits.startsWith(codeDigits)) {
             digits = digits.slice(codeDigits.length);
         }
-
         phoneInput.value = digits ? code + ' ' + digits : '';
     });
 
@@ -477,14 +490,12 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             const code = map[data.country_code];
             if (!code) return;
-
             const target = [...document.querySelectorAll('.country-picker__item')]
                 .find(el => el.dataset.value === code);
             if (target) target.click();
         })
         .catch(() => {});
 
-    // === Отправка формы ===
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -528,5 +539,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-</script></body>
+</script>
+</body>
 </html>
