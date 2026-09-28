@@ -237,6 +237,9 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    // ⚠️ ВСТАВЬ СВОЮ ССЫЛКУ ИЗ FORMSPREE НИЖЕ
+    const FORMSPREE_URL = 'https://formspree.io/f/xwlpakbj';
+
     const dateInput = document.querySelector('input[name="date"]');
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
@@ -260,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch(form.action, {
+            const response = await fetch(FORMSPREE_URL, {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }
@@ -286,6 +289,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-</script>
-</body>
+</script></body>
 </html>
