@@ -122,6 +122,37 @@ body {
     .hero h1 { font-size: 28px; }
     .section h2 { font-size: 24px; }
 }
+.phone-row {
+    display: flex;
+    gap: 8px;
+}
+
+.country-select {
+    padding: 14px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #fff;
+    cursor: pointer;
+    max-width: 150px;
+    flex-shrink: 0;
+}
+
+.country-select:focus {
+    outline: none;
+    border-color: #d63384;
+}
+
+.phone-row input[type="tel"] {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 500px) {
+    .phone-row { flex-direction: column; }
+    .country-select { max-width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -193,7 +224,20 @@ body {
         <!-- ⚠️ ЗАМЕНИ ССЫЛКУ НА СВОЮ ИЗ FORMSPREE -->
         <form id="bookingForm" class="form" action="https://formspree.io/f/xwlpakbj" method="POST">
             <input type="text" name="name" placeholder="Ваше имя" required>
-            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+            <div class="phone-row">
+    <select id="countryCode" class="country-select">
+        <option value="+375" data-mask="+375 (__) ___-__-__" data-pattern="^\+375\d{9}$">🇧🇾 Беларусь</option>
+        <option value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$">🇷🇺 Россия</option>
+        <option value="+380" data-mask="+380 (__) ___-__-__" data-pattern="^\+380\d{9}$">🇺🇦 Украина</option>
+        <option value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$">🇰🇿 Казахстан</option>
+        <option value="+995" data-mask="+995 (___) ___-___" data-pattern="^\+995\d{9}$">🇬🇪 Грузия</option>
+        <option value="+373" data-mask="+373 (__) ___-___" data-pattern="^\+373\d{8}$">🇲🇩 Молдова</option>
+        <option value="+371" data-mask="+371 (___) ___-__" data-pattern="^\+371\d{8}$">🇱🇻 Латвия</option>
+        <option value="+370" data-mask="+370 (___) ___-__" data-pattern="^\+370\d{8}$">🇱🇹 Литва</option>
+        <option value="+372" data-mask="+372 (___) ___-__" data-pattern="^\+372\d{7,8}$">🇪🇪 Эстония</option>
+    </select>
+    <input type="tel" id="phoneInput" name="phone" placeholder="+375 (__) ___-__-__" required>
+</div>
             <select name="service" required>
                 <option value="">Выберите услугу</option>
                 <option>Маникюр</option>
@@ -237,7 +281,7 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // ⚠️ ВСТАВЬ СВОЮ ССЫЛКУ ИЗ FORMSPREE НИЖЕ
+    // ⚠️ ВСТАВЬ СВОЮ ССЫЛКУ ИЗ FORMSPREE
     const FORMSPREE_URL = 'https://formspree.io/f/xwlpakbj';
 
     const dateInput = document.querySelector('input[name="date"]');
@@ -247,14 +291,75 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('bookingForm');
     const msg = document.getElementById('formMessage');
     const modal = document.getElementById('successModal');
+    const countrySelect = document.getElementById('countryCode');
+    const phoneInput = document.getElementById('phoneInput');
+
+    // При смене страны — меняем placeholder
+    countrySelect.addEventListener('change', () => {
+        const opt = countrySelect.options[countrySelect.selectedIndex];
+        phoneInput.placeholder = opt.dataset.mask;
+        phoneInput.value = '';
+        phoneInput.focus();
+    });
+
+    // Автоподстановка кода страны + маска при вводе
+    phoneInput.addEventListener('input', () => {
+        const opt = countrySelect.options[countrySelect.selectedIndex];
+        const code = opt.value;
+
+        // оставляем только цифры и +
+        let digits = phoneInput.value.replace(/[^\d]/g, '');
+
+        // убираем код страны в начале, если пользователь его ввёл
+        if (digits.startsWith(code.replace('+', ''))) {
+            digits = digits.slice(code.replace('+', '').length);
+        }
+
+        // Собираем номер заново: код + цифры
+        let result = code;
+        if (digits) result += ' ' + digits;
+
+        phoneInput.value = result;
+    });
+
+    // Определяем страну по IP при загрузке (необязательно, но удобно)
+    fetch('https://ipapi.co/json/')
+        .then(r => r.json())
+        .then(data => {
+            const countryMap = {
+                'BY': '+375',
+                'RU': '+7',
+                'UA': '+380',
+                'KZ': '+7',
+                'GE': '+995',
+                'MD': '+373',
+                'LV': '+371',
+                'LT': '+370',
+                'EE': '+372'
+            };
+            const code = countryMap[data.country_code];
+            if (code) {
+                for (let i = 0; i < countrySelect.options.length; i++) {
+                    if (countrySelect.options[i].value === code) {
+                        countrySelect.selectedIndex = i;
+                        countrySelect.dispatchEvent(new Event('change'));
+                        break;
+                    }
+                }
+            }
+        })
+        .catch(() => {});
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const phone = form.phone.value;
-        const digits = phone.replace(/\D/g, '');
-        if (digits.length < 10) {
-            msg.textContent = 'Проверьте номер телефона';
+        // Валидация телефона по выбранной стране
+        const opt = countrySelect.options[countrySelect.selectedIndex];
+        const pattern = new RegExp(opt.dataset.pattern);
+        const phone = phoneInput.value.replace(/\s/g, '');
+
+        if (!pattern.test(phone)) {
+            msg.textContent = 'Проверьте номер телефона для выбранной страны';
             msg.className = 'form-message error';
             return;
         }
@@ -272,6 +377,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 modal.classList.add('modal--visible');
                 form.reset();
+                // после reset возвращаем плейсхолдер по текущей стране
+                const opt = countrySelect.options[countrySelect.selectedIndex];
+                phoneInput.placeholder = opt.dataset.mask;
             } else {
                 msg.textContent = 'Ошибка отправки. Позвоните нам.';
                 msg.className = 'form-message error';
