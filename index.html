@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail Studio — маникюр и педикюр</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <div class="logo">💅 Nail Studio</div>
+        <nav class="nav">
+            <a href="#services">Услуги</a>
+            <a href="#gallery">Работы</a>
+            <a href="#booking">Запись</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Красивые ногти — ваша визитная карточка</h1>
+        <p>Маникюр, педикюр, наращивание. Запись онлайн за 30 секунд.</p>
+        <a href="#booking" class="btn btn--primary">Записаться</a>
+    </div>
+</section>
+
+<section id="services" class="section">
+    <div class="container">
+        <h2>Услуги и цены</h2>
+        <div class="grid services">
+            <div class="card">
+                <h3>Маникюр классический</h3>
+                <p>Обработка кутикулы, форма, покрытие</p>
+                <span class="price">1 500 ₽</span>
+            </div>
+            <div class="card">
+                <h3>Педикюр</h3>
+                <p>Полная обработка стоп и ногтей</p>
+                <span class="price">2 000 ₽</span>
+            </div>
+            <div class="card">
+                <h3>Наращивание</h3>
+                <p>Гель, любая длина и форма</p>
+                <span class="price">2 500 ₽</span>
+            </div>
+            <div class="card">
+                <h3>Дизайн</h3>
+                <p>Роспись, стразы, втирка</p>
+                <span class="price">от 300 ₽</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="section section--dark">
+    <div class="container">
+        <h2>Мои работы</h2>
+        <div class="grid gallery">
+            <img src="images/work1.jpg" alt="Работа 1">
+            <img src="images/work2.jpg" alt="Работа 2">
+            <img src="images/work3.jpg" alt="Работа 3">
+            <img src="images/work4.jpg" alt="Работа 4">
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="section">
+    <div class="container">
+        <h2>Запись онлайн</h2>
+        <form id="bookingForm" class="form">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+            <select name="service" required>
+                <option value="">Выберите услугу</option>
+                <option>Маникюр</option>
+                <option>Педикюр</option>
+                <option>Наращивание</option>
+                <option>Дизайн</option>
+            </select>
+            <input type="date" name="date" required>
+            <select name="time" required>
+                <option value="">Выберите время</option>
+                <option>10:00</option>
+                <option>12:00</option>
+                <option>14:00</option>
+                <option>16:00</option>
+                <option>18:00</option>
+            </select>
+            <button type="submit" class="btn btn--primary">Записаться</button>
+        </form>
+        <div id="formMessage" class="form-message"></div>
+    </div>
+</section>
+
+<footer id="contacts" class="footer">
+    <div class="container">
+        <p>📍 г. Москва, ул. Примерная, 1</p>
+        <p>📞 +7 (900) 123-45-67</p>
+        <p>© 2026 Nail Studio. Все права защищены.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
