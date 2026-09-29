@@ -93,6 +93,164 @@ body {
 .card p { color: #666; font-size: 14px; margin-bottom: 12px; }
 .price { color: #d63384; font-weight: 700; font-size: 18px; }
 
+/* === О МАСТЕРЕ === */
+.master {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.master__photo {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(214, 51, 132, 0.2);
+}
+
+.master__photo img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+}
+
+.master__photo:hover img {
+    transform: scale(1.03);
+}
+
+.master__photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    border: 3px solid rgba(214, 51, 132, 0.25);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.master__badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 14px 20px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 2;
+}
+
+.master__badge strong {
+    display: block;
+    font-size: 17px;
+    color: #d63384;
+}
+
+.master__badge span {
+    font-size: 13px;
+    color: #666;
+}
+
+.master__info h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #2b2b2b;
+}
+
+.master__role {
+    font-size: 16px;
+    color: #d63384;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.master__text {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+.master__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.master__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.master__feature-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.master__feature strong {
+    display: block;
+    font-size: 15px;
+    color: #2b2b2b;
+    margin-bottom: 2px;
+}
+
+.master__feature span {
+    font-size: 13px;
+    color: #888;
+}
+
+.master__stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.master__stat {
+    text-align: left;
+}
+
+.master__stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #d63384;
+    line-height: 1;
+}
+
+.master__stat-label {
+    font-size: 13px;
+    color: #888;
+    margin-top: 6px;
+}
+
+.master__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 900px) {
+    .master {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .master__photo img { height: 380px; }
+    .master__info h3 { font-size: 26px; }
+    .master__features { grid-template-columns: 1fr; }
+    .master__stats { flex-wrap: wrap; gap: 20px; }
+}
+
+/* === ФОРМА === */
 .form {
     max-width: 500px; margin: 0 auto;
     display: flex; flex-direction: column; gap: 14px;
@@ -108,7 +266,7 @@ body {
 .form-message.success { color: #2e7d32; }
 .form-message.error { color: #c62828; }
 
-/* === ВЫБОР СТРАНЫ + ТЕЛЕФОН === */
+/* === ВЫБОР СТРАНЫ === */
 .phone-row {
     display: flex;
     gap: 8px;
@@ -267,10 +425,11 @@ body {
 <header class="header">
     <div class="container header__inner">
         <a href="#" class="logo">
-            <img src="images/logo.jpg" alt="Nail Studio" class="logo__img">
+            <img src="images/logo.png" alt="Nail Studio" class="logo__img">
             <span class="logo__text">Nail Studio</span>
         </a>
         <nav class="nav">
+            <a href="#master">О мастере</a>
             <a href="#services">Услуги</a>
             <a href="#gallery">Работы</a>
             <a href="#booking">Запись</a>
@@ -287,7 +446,86 @@ body {
     </div>
 </section>
 
-<section id="services" class="section">
+<!-- === О МАСТЕРЕ === -->
+<section id="master" class="section">
+    <div class="container">
+        <h2>О мастере</h2>
+
+        <div class="master">
+            <div class="master__photo">
+                <img src="images/master.jpg" alt="Мастер маникюра">
+                <div class="master__badge">
+                    <strong>Анна Иванова</strong>
+                    <span>Мастер ногтевого сервиса</span>
+                </div>
+            </div>
+
+            <div class="master__info">
+                <h3>Анна Иванова</h3>
+                <div class="master__role">Мастер ногтевого сервиса</div>
+
+                <p class="master__text">
+                    Привет! Меня зовут Анна, и уже более 5 лет я создаю красивые и ухоженные ногти.
+                    Работаю с любыми формами и длинами, использую только качественные материалы
+                    премиум-класса и стерильные инструменты. Каждая процедура — это не только
+                    уход, но и приятное времяпрепровождение.
+                </p>
+
+                <div class="master__features">
+                    <div class="master__feature">
+                        <div class="master__feature-icon">🎓</div>
+                        <div>
+                            <strong>Сертифицированный мастер</strong>
+                            <span>Прошла обучение в ведущих школах</span>
+                        </div>
+                    </div>
+                    <div class="master__feature">
+                        <div class="master__feature-icon">✨</div>
+                        <div>
+                            <strong>Премиум-материалы</strong>
+                            <span>Только проверенные бренды</span>
+                        </div>
+                    </div>
+                    <div class="master__feature">
+                        <div class="master__feature-icon">🧼</div>
+                        <div>
+                            <strong>Полная стерилизация</strong>
+                            <span>Обработка инструментов после каждого клиента</span>
+                        </div>
+                    </div>
+                    <div class="master__feature">
+                        <div class="master__feature-icon">💖</div>
+                        <div>
+                            <strong>Индивидуальный подход</strong>
+                            <span>Подбираю дизайн под ваш стиль</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="master__stats">
+                    <div class="master__stat">
+                        <div class="master__stat-num">5+</div>
+                        <div class="master__stat-label">лет опыта</div>
+                    </div>
+                    <div class="master__stat">
+                        <div class="master__stat-num">1500+</div>
+                        <div class="master__stat-label">довольных клиентов</div>
+                    </div>
+                    <div class="master__stat">
+                        <div class="master__stat-num">10+</div>
+                        <div class="master__stat-label">курсов и обучений</div>
+                    </div>
+                </div>
+
+                <a href="#booking" class="btn btn--primary master__btn">
+                    💅 Записаться к мастеру
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="section section--dark">
     <div class="container">
         <h2>Услуги и цены</h2>
         <div class="grid services">
@@ -315,7 +553,7 @@ body {
     </div>
 </section>
 
-<section id="gallery" class="section section--dark">
+<section id="gallery" class="section">
     <div class="container">
         <h2>Мои работы</h2>
         <div class="grid gallery">
@@ -327,7 +565,7 @@ body {
     </div>
 </section>
 
-<section id="booking" class="section">
+<section id="booking" class="section section--dark">
     <div class="container">
         <h2>Запись онлайн</h2>
 
@@ -404,7 +642,6 @@ body {
     </div>
 </footer>
 
-<!-- Модальное окно успеха -->
 <div class="modal" id="successModal">
     <div class="modal__overlay" data-close-modal></div>
     <div class="modal__content">
@@ -417,7 +654,6 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // ⚠️ ЗАМЕНИ НА СВОЮ ССЫЛКУ ИЗ FORMSPREE
     const FORMSPREE_URL = 'https://formspree.io/f/xwlpakbj';
 
     const dateInput = document.querySelector('input[name="date"]');
@@ -480,7 +716,6 @@ document.addEventListener('DOMContentLoaded', () => {
         phoneInput.value = digits ? code + ' ' + digits : '';
     });
 
-    // Автоопределение страны по IP
     fetch('https://ipapi.co/json/')
         .then(r => r.json())
         .then(data => {
