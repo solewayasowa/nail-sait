@@ -221,9 +221,39 @@ document.addEventListener('DOMContentLoaded', () => {
         flag: 'by'
     };
 
-    countryBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        picker.classList.toggle('country-picker--open');
+    // Клик по кнопке — открыть/закрыть список
+countryBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    picker.classList.toggle('country-picker--open');
+});
+
+// Клик где угодно вне пикера — закрыть список
+document.addEventListener('click', () => {
+    picker.classList.remove('country-picker--open');
+});
+
+// Клик по самому списку не должен закрывать его
+document.getElementById('countryList').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Клик по стране — выбрать и закрыть
+document.querySelectorAll('.country-picker__item').forEach(item => {
+    item.addEventListener('click', () => {
+        currentCountry = {
+            value: item.dataset.value,
+            mask: item.dataset.mask,
+            pattern: item.dataset.pattern,
+            flag: item.dataset.flag
+        };
+        currentFlag.src = 'https://flagcdn.com/w40/' + currentCountry.flag + '.png';
+        currentFlag.alt = currentCountry.flag.toUpperCase();
+        currentCode.textContent = currentCountry.value;
+        phoneInput.placeholder = currentCountry.mask;
+        phoneInput.value = '';
+        phoneInput.focus();
+        picker.classList.remove('country-picker--open');
+    }); 
     });
 
     document.addEventListener('click', (e) => {
