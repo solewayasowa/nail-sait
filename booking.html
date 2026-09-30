@@ -34,30 +34,71 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
 .form-message.error { color: #c62828; }
 .form__submit { margin-top: 8px; padding: 16px; font-size: 16px; }
 
-.phone-row { display: flex; gap: 8px; }
-.country-picker { position: relative; flex-shrink: 0; }
-.country-picker__btn { display: flex; align-items: center; gap: 6px; padding: 14px 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-size: 15px; font-family: inherit; cursor: pointer; height: 100%; min-height: 52px; }
-.country-picker__btn:hover, .country-picker__btn:focus { outline: none; border-color: #d63384; }
-.country-picker__btn .flag { width: 24px; height: 17px; object-fit: cover; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
-.country-picker__btn .arrow { font-size: 10px; color: #999; margin-left: 2px; }
-.country-picker__list { position: absolute; top: calc(100% + 6px); left: 0; min-width: 240px; background: #fff; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 6px; display: none; z-index: 50; max-height: 320px; overflow-y: auto; }
-.country-picker--open .country-picker__list { display: block; animation: dropdownIn 0.15s ease; }
-@keyframes dropdownIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-.country-picker__item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 6px; cursor: pointer; font-size: 15px; }
-.country-picker__item:hover { background: #fce4ec; }
-.country-picker__item .flag { width: 24px; height: 17px; object-fit: cover; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
-.country-picker__item .code { margin-left: auto; color: #999; font-size: 14px; }
-.phone-row input[type="tel"] { flex: 1; min-width: 0; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; font-family: inherit; }
-.phone-row input[type="tel"]:focus { outline: none; border-color: #d63384; }
+/* === СПОСОБ ОПЛАТЫ === */
+.payment-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+}
+.payment-option {
+    position: relative;
+    cursor: pointer;
+}
+.payment-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.payment-option__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 12px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+.payment-option__icon {
+    font-size: 28px;
+    line-height: 1;
+}
+.payment-option__label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+}
+.payment-option__hint {
+    font-size: 12px;
+    color: #999;
+}
+.payment-option:hover .payment-option__box {
+    border-color: #f8bbd0;
+    background: #fef6f9;
+}
+.payment-option input:checked + .payment-option__box {
+    border-color: #d63384;
+    background: #fce4ec;
+    box-shadow: 0 4px 15px rgba(214, 51, 132, 0.15);
+}
+.payment-option input:checked + .payment-option__box .payment-option__label {
+    color: #d63384;
+}
 
 @media (max-width: 600px) {
     .booking-card { padding: 30px 22px; border-radius: 16px; }
     .booking-card h1 { font-size: 24px; }
-    .phone-row { flex-direction: column; }
-    .country-picker, .country-picker__btn { width: 100%; }
-    .country-picker__list { width: 100%; }
     .logo__img { height: 40px; }
     .logo__text { font-size: 18px; }
+    .payment-options { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .payment-option__box { padding: 14px 8px; }
+    .payment-option__icon { font-size: 24px; }
+    .payment-option__label { font-size: 14px; }
+    .payment-option__hint { font-size: 11px; }
 }
 </style>
 </head>
@@ -128,6 +169,27 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <option>18:00</option>
                 </select>
 
+                <!-- ⚡ СПОСОБ ОПЛАТЫ -->
+                <label>Способ оплаты</label>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Карта" checked>
+                        <div class="payment-option__box">
+                            <div class="payment-option__icon">💳</div>
+                            <div class="payment-option__label">Картой</div>
+                            <div class="payment-option__hint">перевод или терминал</div>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="Наличные">
+                        <div class="payment-option__box">
+                            <div class="payment-option__icon">💵</div>
+                            <div class="payment-option__label">Наличными</div>
+                            <div class="payment-option__hint">при визите</div>
+                        </div>
+                    </label>
+                </div>
+
                 <button type="submit" class="btn btn--primary form__submit">Записаться</button>
             </form>
             <div id="formMessage" class="form-message"></div>
@@ -137,7 +199,6 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // ⚠️ ЗАМЕНИ ТВОЙ_КОД НА СВОЙ КОД ИЗ FORMSPREE
     const FORMSPREE_URL = 'https://formspree.io/f/xwlpakbj';
 
     const dateInput = document.querySelector('input[name="date"]');
@@ -220,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg.textContent = '';
 
         const formData = new FormData(form);
+        formData.append('_subject', 'Новая запись с сайта Nail Studio');
 
         try {
             const response = await fetch(FORMSPREE_URL, {
