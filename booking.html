@@ -443,26 +443,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch(FORMSPREE_URL, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                modal.classList.add('modal--visible');
-                form.reset();
-                phoneInput.placeholder = currentCountry.mask;
-            } else {
-                msg.textContent = 'Ошибка отправки. Позвоните нам.';
-                msg.className = 'form-message error';
-            }
-        } catch (err) {
-            msg.textContent = 'Ошибка соединения. Попробуйте ещё раз.';
-            msg.className = 'form-message error';
-            console.error(err);
-        }
+    const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
     });
+
+    if (response.ok) {
+        window.location.href = 'thanks.html';
+    } else {
+        msg.textContent = 'Ошибка отправки. Позвоните нам.';
+        msg.className = 'form-message error';
+    }
+} catch (err) {
+    msg.textContent = 'Ошибка соединения. Попробуйте ещё раз.';
+    msg.className = 'form-message error';
+    console.error(err);
+}    });
 
     document.querySelectorAll('[data-close-modal]').forEach(el => {
         el.addEventListener('click', () => {
