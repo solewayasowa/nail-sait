@@ -54,13 +54,34 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
 .gallery img:hover { transform: scale(1.03); }
 
 /* === ОТЗЫВЫ === */
-.reviews-intro {
+.reviews-top {
     text-align: center;
-    color: #888;
     margin-top: -20px;
     margin-bottom: 40px;
-    font-size: 15px;
 }
+.reviews-intro {
+    color: #888;
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+.reviews-cta {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #fff;
+    color: #d63384;
+    border: 2px solid #d63384;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+.reviews-cta:hover {
+    background: #d63384;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(214, 51, 132, 0.3);
+}s
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -316,6 +337,7 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
     <div class="container">
         <h2>Отзывы клиентов</h2>
         <p class="reviews-intro">Более 1500 клиентов уже оценили мою работу 💖</p>
+ <a href="review.html" class="reviews-cta">✍️ Оставить отзыв</a>
 
         <div class="reviews-grid">
 
