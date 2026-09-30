@@ -6,69 +6,23 @@
 <title>Nail Studio — маникюр и педикюр</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    color: #2b2b2b;
-    line-height: 1.6;
-    background: #fff;
-}
-
+body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height: 1.6; background: #fff; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-/* === ШАПКА === */
-.header {
-    position: sticky; top: 0; background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100;
-}
-.header__inner {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 20px;
-}
-
-/* === ЛОГОТИП === */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: #2b2b2b;
-    transition: transform 0.2s;
-}
+.header { position: sticky; top: 0; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100; }
+.header__inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #2b2b2b; transition: transform 0.2s; }
 .logo:hover { transform: scale(1.02); }
-.logo__img {
-    height: 52px;
-    width: auto;
-    max-width: 160px;
-    object-fit: contain;
-    display: block;
-    filter: drop-shadow(0 3px 6px rgba(214, 51, 132, 0.2));
-}
-.logo__text {
-    font-size: 22px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #d63384, #b02a6b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-}
-
+.logo__img { height: 52px; width: auto; max-width: 160px; object-fit: contain; display: block; filter: drop-shadow(0 3px 6px rgba(214, 51, 132, 0.2)); }
+.logo__text { font-size: 22px; font-weight: 700; background: linear-gradient(135deg, #d63384, #b02a6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
 .nav a { margin: 0 12px; color: #2b2b2b; text-decoration: none; font-weight: 500; }
 .nav a:hover { color: #d63384; }
 
-.btn {
-    display: inline-block; padding: 12px 24px; border-radius: 8px;
-    text-decoration: none; font-weight: 600; border: none;
-    cursor: pointer; transition: 0.2s; font-size: 15px;
-}
+.btn { display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: 0.2s; font-size: 15px; }
 .btn--primary { background: #d63384; color: #fff; }
 .btn--primary:hover { background: #b02a6b; }
 
-.hero {
-    padding: 90px 0; text-align: center;
-    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-}
+.hero { padding: 90px 0; text-align: center; background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
 .hero h1 { font-size: 40px; margin-bottom: 20px; }
 .hero p { font-size: 18px; margin-bottom: 30px; }
 
@@ -77,346 +31,73 @@ body {
 .section h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
 
 .grid { display: grid; gap: 24px; }
-.services { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .gallery { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-.gallery img {
-    width: 100%; height: 220px; object-fit: cover;
-    border-radius: 12px; transition: 0.3s;
-}
+.gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; transition: 0.3s; }
 .gallery img:hover { transform: scale(1.03); }
 
-.card {
-    background: #fff; padding: 24px; border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-}
-.card h3 { margin-bottom: 8px; }
-.card p { color: #666; font-size: 14px; margin-bottom: 12px; }
-.price { color: #d63384; font-weight: 700; font-size: 18px; }
+.services-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.service-item { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; transition: box-shadow 0.2s; }
+.service-item:hover { box-shadow: 0 8px 30px rgba(214, 51, 132, 0.12); }
+.service-item--open { box-shadow: 0 8px 30px rgba(214, 51, 132, 0.18); }
+.service-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 26px; cursor: pointer; user-select: none; gap: 16px; }
+.service-header__left { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; }
+.service-emoji { font-size: 28px; flex-shrink: 0; line-height: 1; }
+.service-title { font-size: 19px; font-weight: 600; color: #2b2b2b; }
+.service-subtitle { font-size: 13px; color: #888; margin-top: 2px; }
+.service-header__right { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.service-price { color: #d63384; font-weight: 700; font-size: 19px; white-space: nowrap; }
+.service-arrow { width: 28px; height: 28px; border-radius: 50%; background: #fce4ec; color: #d63384; display: flex; align-items: center; justify-content: center; font-size: 12px; transition: transform 0.3s ease, background 0.2s; flex-shrink: 0; }
+.service-item--open .service-arrow { transform: rotate(180deg); background: #d63384; color: #fff; }
+.service-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.service-item--open .service-body { max-height: 600px; }
+.service-body__inner { padding: 0 26px 26px; border-top: 1px solid #f0f0f0; padding-top: 20px; }
+.service-body h4 { font-size: 14px; color: #d63384; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; font-weight: 700; }
+.service-body ul { list-style: none; padding: 0; }
+.service-body li { padding: 7px 0 7px 28px; position: relative; color: #555; font-size: 15px; line-height: 1.5; }
+.service-body li::before { content: '✓'; position: absolute; left: 0; top: 7px; color: #d63384; font-weight: bold; font-size: 16px; }
+.service-body__meta { margin-top: 18px; padding-top: 16px; border-top: 1px dashed #eee; display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; }
+.service-body__meta span { color: #666; }
+.service-body__meta strong { color: #2b2b2b; }
+.service-body__btn { margin-top: 20px; display: inline-block; }
 
-/* === О МАСТЕРЕ === */
-.master {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 50px;
-    align-items: center;
-}
+.master { display: grid; grid-template-columns: 380px 1fr; gap: 50px; align-items: center; }
+.master__photo { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(214, 51, 132, 0.2); }
+.master__photo img { width: 100%; height: 480px; object-fit: cover; display: block; transition: transform 0.4s; }
+.master__photo:hover img { transform: scale(1.03); }
+.master__badge { position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 14px 20px; border-radius: 12px; text-align: center; }
+.master__badge strong { display: block; font-size: 17px; color: #d63384; }
+.master__badge span { font-size: 13px; color: #666; }
+.master__info h3 { font-size: 32px; margin-bottom: 8px; color: #2b2b2b; }
+.master__role { font-size: 16px; color: #d63384; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.5px; text-transform: uppercase; }
+.master__text { color: #555; font-size: 16px; margin-bottom: 24px; line-height: 1.7; }
+.master__features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+.master__feature { display: flex; align-items: flex-start; gap: 10px; }
+.master__feature-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+.master__feature strong { display: block; font-size: 15px; color: #2b2b2b; margin-bottom: 2px; }
+.master__feature span { font-size: 13px; color: #888; }
+.master__stats { display: flex; gap: 30px; margin-bottom: 30px; padding: 20px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+.master__stat-num { font-size: 28px; font-weight: 700; color: #d63384; line-height: 1; }
+.master__stat-label { font-size: 13px; color: #888; margin-top: 6px; }
 
-.master__photo {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(214, 51, 132, 0.2);
-}
-
-.master__photo img {
-    width: 100%;
-    height: 480px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s;
-}
-
-.master__photo:hover img {
-    transform: scale(1.03);
-}
-
-.master__photo::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    border: 3px solid rgba(214, 51, 132, 0.25);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.master__badge {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 14px 20px;
-    border-radius: 12px;
-    text-align: center;
-    z-index: 2;
-}
-
-.master__badge strong {
-    display: block;
-    font-size: 17px;
-    color: #d63384;
-}
-
-.master__badge span {
-    font-size: 13px;
-    color: #666;
-}
-
-.master__info h3 {
-    font-size: 32px;
-    margin-bottom: 8px;
-    color: #2b2b2b;
-}
-
-.master__role {
-    font-size: 16px;
-    color: #d63384;
-    font-weight: 600;
-    margin-bottom: 24px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-.master__text {
-    color: #555;
-    font-size: 16px;
-    margin-bottom: 24px;
-    line-height: 1.7;
-}
-
-.master__features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-}
-
-.master__feature {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.master__feature-icon {
-    font-size: 22px;
-    flex-shrink: 0;
-    line-height: 1;
-}
-
-.master__feature strong {
-    display: block;
-    font-size: 15px;
-    color: #2b2b2b;
-    margin-bottom: 2px;
-}
-
-.master__feature span {
-    font-size: 13px;
-    color: #888;
-}
-
-.master__stats {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 30px;
-    padding: 20px 0;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-}
-
-.master__stat {
-    text-align: left;
-}
-
-.master__stat-num {
-    font-size: 28px;
-    font-weight: 700;
-    color: #d63384;
-    line-height: 1;
-}
-
-.master__stat-label {
-    font-size: 13px;
-    color: #888;
-    margin-top: 6px;
-}
-
-.master__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
+.footer { padding: 40px 0; background: #2b2b2b; color: #fff; text-align: center; }
 
 @media (max-width: 900px) {
-    .master {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
+    .master { grid-template-columns: 1fr; gap: 30px; }
     .master__photo img { height: 380px; }
     .master__info h3 { font-size: 26px; }
     .master__features { grid-template-columns: 1fr; }
     .master__stats { flex-wrap: wrap; gap: 20px; }
 }
-
-/* === ФОРМА === */
-.form {
-    max-width: 500px; margin: 0 auto;
-    display: flex; flex-direction: column; gap: 14px;
-}
-.form input, .form select {
-    padding: 14px; border: 1px solid #ddd;
-    border-radius: 8px; font-size: 15px; font-family: inherit;
-}
-.form input:focus, .form select:focus {
-    outline: none; border-color: #d63384;
-}
-.form-message { text-align: center; margin-top: 20px; font-weight: 600; }
-.form-message.success { color: #2e7d32; }
-.form-message.error { color: #c62828; }
-
-/* === ВЫБОР СТРАНЫ === */
-.phone-row {
-    display: flex;
-    gap: 8px;
-}
-.country-picker {
-    position: relative;
-    flex-shrink: 0;
-}
-.country-picker__btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 14px 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 15px;
-    font-family: inherit;
-    cursor: pointer;
-    height: 100%;
-    min-height: 52px;
-    transition: border-color 0.2s;
-}
-.country-picker__btn:hover,
-.country-picker__btn:focus {
-    outline: none;
-    border-color: #d63384;
-}
-.country-picker__btn .flag {
-    width: 24px;
-    height: 17px;
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-}
-.country-picker__btn .arrow {
-    font-size: 10px;
-    color: #999;
-    margin-left: 2px;
-}
-.country-picker__list {
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0;
-    min-width: 240px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    padding: 6px;
-    display: none;
-    z-index: 50;
-    max-height: 320px;
-    overflow-y: auto;
-}
-.country-picker--open .country-picker__list {
-    display: block;
-    animation: dropdownIn 0.15s ease;
-}
-@keyframes dropdownIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-.country-picker__item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: background 0.15s;
-}
-.country-picker__item:hover {
-    background: #fce4ec;
-}
-.country-picker__item .flag {
-    width: 24px;
-    height: 17px;
-    object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-}
-.country-picker__item .code {
-    margin-left: auto;
-    color: #999;
-    font-size: 14px;
-}
-.phone-row input[type="tel"] {
-    flex: 1;
-    min-width: 0;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 15px;
-    font-family: inherit;
-}
-.phone-row input[type="tel"]:focus {
-    outline: none;
-    border-color: #d63384;
-}
-
-.footer {
-    padding: 40px 0; background: #2b2b2b;
-    color: #fff; text-align: center;
-}
-
-/* === МОДАЛЬНОЕ ОКНО === */
-.modal {
-    position: fixed; inset: 0;
-    display: none; align-items: center; justify-content: center;
-    z-index: 1000;
-}
-.modal--visible { display: flex; }
-.modal__overlay {
-    position: absolute; inset: 0;
-    background: rgba(0,0,0,0.5);
-}
-.modal__content {
-    position: relative; background: #fff;
-    padding: 40px 30px; border-radius: 16px;
-    max-width: 420px; width: 90%;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    animation: modalIn 0.3s ease;
-}
-@keyframes modalIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-.modal__icon {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: #d63384; color: #fff;
-    font-size: 32px; font-weight: bold;
-    line-height: 60px; margin: 0 auto 20px;
-}
-.modal__content h3 { font-size: 24px; margin-bottom: 10px; color: #2b2b2b; }
-.modal__content p { color: #666; margin-bottom: 24px; font-size: 15px; }
-
 @media (max-width: 700px) {
     .nav { display: none; }
     .hero h1 { font-size: 28px; }
     .section h2 { font-size: 24px; }
     .logo__img { height: 40px; }
     .logo__text { font-size: 18px; }
-}
-@media (max-width: 500px) {
-    .phone-row { flex-direction: column; }
-    .country-picker,
-    .country-picker__btn { width: 100%; }
-    .country-picker__list { width: 100%; }
+    .service-header { padding: 18px 20px; }
+    .service-title { font-size: 16px; }
+    .service-price { font-size: 16px; }
+    .service-emoji { font-size: 24px; }
 }
 </style>
 </head>
@@ -424,7 +105,7 @@ body {
 
 <header class="header">
     <div class="container header__inner">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Nail Studio" class="logo__img">
             <span class="logo__text">Nail Studio</span>
         </a>
@@ -432,7 +113,7 @@ body {
             <a href="#master">О мастере</a>
             <a href="#services">Услуги</a>
             <a href="#gallery">Работы</a>
-            <a href="#booking">Запись</a>
+            <a href="booking.html">Запись</a>
             <a href="#contacts">Контакты</a>
         </nav>
     </div>
@@ -442,84 +123,41 @@ body {
     <div class="container">
         <h1>Красивые ногти — ваша визитная карточка</h1>
         <p>Маникюр, педикюр, наращивание. Запись онлайн за 30 секунд.</p>
-        <a href="#booking" class="btn btn--primary">Записаться</a>
+        <a href="booking.html" class="btn btn--primary">Записаться</a>
     </div>
 </section>
 
-<!-- === О МАСТЕРЕ === -->
 <section id="master" class="section">
     <div class="container">
         <h2>О мастере</h2>
-
         <div class="master">
             <div class="master__photo">
                 <img src="images/master.jpg" alt="Мастер маникюра">
                 <div class="master__badge">
-                    <strong>Тимоха Паркур</strong>
+                    <strong>Анна Иванова</strong>
                     <span>Мастер ногтевого сервиса</span>
                 </div>
             </div>
-
             <div class="master__info">
-                <h3>Тимофей Паркур</h3>
+                <h3>Анна Иванова</h3>
                 <div class="master__role">Мастер ногтевого сервиса</div>
-
                 <p class="master__text">
                     Привет! Меня зовут Анна, и уже более 5 лет я создаю красивые и ухоженные ногти.
                     Работаю с любыми формами и длинами, использую только качественные материалы
-                    премиум-класса и стерильные инструменты. Каждая процедура — это не только
-                    уход, но и приятное времяпрепровождение.
+                    премиум-класса и стерильные инструменты.
                 </p>
-
                 <div class="master__features">
-                    <div class="master__feature">
-                        <div class="master__feature-icon">🎓</div>
-                        <div>
-                            <strong>Сертифицированный мастер</strong>
-                            <span>Прошла обучение в ведущих школах</span>
-                        </div>
-                    </div>
-                    <div class="master__feature">
-                        <div class="master__feature-icon">✨</div>
-                        <div>
-                            <strong>Премиум-материалы</strong>
-                            <span>Только проверенные бренды</span>
-                        </div>
-                    </div>
-                    <div class="master__feature">
-                        <div class="master__feature-icon">🧼</div>
-                        <div>
-                            <strong>Полная стерилизация</strong>
-                            <span>Обработка инструментов после каждого клиента</span>
-                        </div>
-                    </div>
-                    <div class="master__feature">
-                        <div class="master__feature-icon">💖</div>
-                        <div>
-                            <strong>Индивидуальный подход</strong>
-                            <span>Подбираю дизайн под ваш стиль</span>
-                        </div>
-                    </div>
+                    <div class="master__feature"><div class="master__feature-icon">🎓</div><div><strong>Сертифицированный мастер</strong><span>Обучение в ведущих школах</span></div></div>
+                    <div class="master__feature"><div class="master__feature-icon">✨</div><div><strong>Премиум-материалы</strong><span>Только проверенные бренды</span></div></div>
+                    <div class="master__feature"><div class="master__feature-icon">🧼</div><div><strong>Полная стерилизация</strong><span>Обработка после каждого клиента</span></div></div>
+                    <div class="master__feature"><div class="master__feature-icon">💖</div><div><strong>Индивидуальный подход</strong><span>Дизайн под ваш стиль</span></div></div>
                 </div>
-
                 <div class="master__stats">
-                    <div class="master__stat">
-                        <div class="master__stat-num">5+</div>
-                        <div class="master__stat-label">лет опыта</div>
-                    </div>
-                    <div class="master__stat">
-                        <div class="master__stat-num">1500+</div>
-                        <div class="master__stat-label">довольных клиентов</div>
-                    </div>
-                    <div class="master__stat">
-                        <div class="master__stat-num">10+</div>
-                        <div class="master__stat-label">курсов и обучений</div>
-                    </div>
+                    <div class="master__stat"><div class="master__stat-num">5+</div><div class="master__stat-label">лет опыта</div></div>
+                    <div class="master__stat"><div class="master__stat-num">1500+</div><div class="master__stat-label">довольных клиентов</div></div>
+                    <div class="master__stat"><div class="master__stat-num">10+</div><div class="master__stat-label">курсов и обучений</div></div>
                 </div>
-
-                <a href="#booking" class="btn btn--primary master__btn">
-                    💅 Записаться к мастеру
-                </a>
+                <a href="booking.html" class="btn btn--primary">💅 Записаться к мастеру</a>
             </div>
         </div>
     </div>
@@ -528,26 +166,111 @@ body {
 <section id="services" class="section section--dark">
     <div class="container">
         <h2>Услуги и цены</h2>
-        <div class="grid services">
-            <div class="card">
-                <h3>Маникюр классический</h3>
-                <p>Обработка кутикулы, форма, покрытие</p>
-                <span class="price">1 500 ₽</span>
+        <p style="text-align:center; color:#888; margin-top:-20px; margin-bottom:40px;">Нажмите на услугу, чтобы увидеть, что входит в процедуру</p>
+
+        <div class="services-list">
+            <div class="service-item">
+                <div class="service-header">
+                    <div class="service-header__left">
+                        <div class="service-emoji">💅</div>
+                        <div><div class="service-title">Маникюр классический</div><div class="service-subtitle">Обработка + покрытие · 1 час</div></div>
+                    </div>
+                    <div class="service-header__right"><div class="service-price">1 500 ₽</div><div class="service-arrow">▼</div></div>
+                </div>
+                <div class="service-body">
+                    <div class="service-body__inner">
+                        <h4>Что входит в процедуру</h4>
+                        <ul>
+                            <li>Снятие старого покрытия (если есть)</li>
+                            <li>Обработка кутикулы аппаратом или щипчиками</li>
+                            <li>Придание формы ногтям (миндаль, овал, квадрат)</li>
+                            <li>Шлифовка и полировка ногтевой пластины</li>
+                            <li>Увлажнение кутикулы маслом</li>
+                            <li>Покрытие базой, цветом и топом</li>
+                            <li>Массаж рук с кремом</li>
+                        </ul>
+                        <div class="service-body__meta"><span>⏱ <strong>Длительность:</strong> ~1 час</span><span>💎 <strong>Стойкость:</strong> до 3 недель</span></div>
+                        <a href="booking.html" class="btn btn--primary service-body__btn">Записаться</a>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Педикюр</h3>
-                <p>Полная обработка стоп и ногтей</p>
-                <span class="price">2 000 ₽</span>
+
+            <div class="service-item">
+                <div class="service-header">
+                    <div class="service-header__left">
+                        <div class="service-emoji">🦶</div>
+                        <div><div class="service-title">Педикюр</div><div class="service-subtitle">Полная обработка стоп · 1,5 часа</div></div>
+                    </div>
+                    <div class="service-header__right"><div class="service-price">2 000 ₽</div><div class="service-arrow">▼</div></div>
+                </div>
+                <div class="service-body">
+                    <div class="service-body__inner">
+                        <h4>Что входит в процедуру</h4>
+                        <ul>
+                            <li>Снятие старого покрытия</li>
+                            <li>Обработка стоп: удаление мозолей и натоптышей</li>
+                            <li>Коррекция вросших ногтей</li>
+                            <li>Обработка кутикулы и придание формы</li>
+                            <li>Шлифовка ногтевой пластины</li>
+                            <li>Покрытие базой, цветом и топом</li>
+                            <li>Питательный крем для стоп</li>
+                        </ul>
+                        <div class="service-body__meta"><span>⏱ <strong>Длительность:</strong> ~1,5 часа</span><span>💎 <strong>Стойкость:</strong> до 4 недель</span></div>
+                        <a href="booking.html" class="btn btn--primary service-body__btn">Записаться</a>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Наращивание</h3>
-                <p>Гель, любая длина и форма</p>
-                <span class="price">2 500 ₽</span>
+
+            <div class="service-item">
+                <div class="service-header">
+                    <div class="service-header__left">
+                        <div class="service-emoji">✨</div>
+                        <div><div class="service-title">Наращивание</div><div class="service-subtitle">Гель на форму или типсы · 2,5 часа</div></div>
+                    </div>
+                    <div class="service-header__right"><div class="service-price">2 500 ₽</div><div class="service-arrow">▼</div></div>
+                </div>
+                <div class="service-body">
+                    <div class="service-body__inner">
+                        <h4>Что входит в процедуру</h4>
+                        <ul>
+                            <li>Подготовка натуральных ногтей</li>
+                            <li>Подбор формы и длины</li>
+                            <li>Наращивание гелем верхних форм или типсов</li>
+                            <li>Моделирование архитектуры ногтя</li>
+                            <li>Опиливание и придание финальной формы</li>
+                            <li>Покрытие цветом и топом</li>
+                            <li>По желанию — простой дизайн</li>
+                        </ul>
+                        <div class="service-body__meta"><span>⏱ <strong>Длительность:</strong> ~2,5 часа</span><span>💎 <strong>Коррекция:</strong> через 3-4 недели</span></div>
+                        <a href="booking.html" class="btn btn--primary service-body__btn">Записаться</a>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Дизайн</h3>
-                <p>Роспись, стразы, втирка</p>
-                <span class="price">от 300 ₽</span>
+
+            <div class="service-item">
+                <div class="service-header">
+                    <div class="service-header__left">
+                        <div class="service-emoji">🎨</div>
+                        <div><div class="service-title">Дизайн</div><div class="service-subtitle">Роспись, стразы, втирка · от 30 мин</div></div>
+                    </div>
+                    <div class="service-header__right"><div class="service-price">от 300 ₽</div><div class="service-arrow">▼</div></div>
+                </div>
+                <div class="service-body">
+                    <div class="service-body__inner">
+                        <h4>Виды дизайна</h4>
+                        <ul>
+                            <li>Художественная роспись</li>
+                            <li>Стразы Swarovski и декор</li>
+                            <li>Втирка: жемчужная, зеркальная, голографическая</li>
+                            <li>Слайдер-дизайн и наклейки</li>
+                            <li>Объёмный дизайн</li>
+                            <li>Кошачий глаз, градиент, омбре</li>
+                            <li>Френч, лунный маникюр</li>
+                        </ul>
+                        <div class="service-body__meta"><span>💰 <strong>Цена:</strong> зависит от сложности</span><span>⏱ <strong>Длительность:</strong> от 30 минут</span></div>
+                        <a href="booking.html" class="btn btn--primary service-body__btn">Записаться</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -565,75 +288,6 @@ body {
     </div>
 </section>
 
-<section id="booking" class="section section--dark">
-    <div class="container">
-        <h2>Запись онлайн</h2>
-
-        <form id="bookingForm" class="form">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-
-            <div class="phone-row">
-                <div class="country-picker" id="countryPicker">
-                    <button type="button" class="country-picker__btn" id="countryBtn">
-                        <img src="https://flagcdn.com/w40/by.png" class="flag" alt="BY" id="currentFlag">
-                        <span id="currentCode">+375</span>
-                        <span class="arrow">▾</span>
-                    </button>
-                    <div class="country-picker__list" id="countryList">
-                        <div class="country-picker__item" data-value="+375" data-mask="+375 (__) ___-__-__" data-pattern="^\+375\d{9}$" data-flag="by">
-                            <img src="https://flagcdn.com/w40/by.png" class="flag" alt="BY"> Беларусь <span class="code">+375</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$" data-flag="ru">
-                            <img src="https://flagcdn.com/w40/ru.png" class="flag" alt="RU"> Россия <span class="code">+7</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+380" data-mask="+380 (__) ___-__-__" data-pattern="^\+380\d{9}$" data-flag="ua">
-                            <img src="https://flagcdn.com/w40/ua.png" class="flag" alt="UA"> Украина <span class="code">+380</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+7" data-mask="+7 (___) ___-__-__" data-pattern="^\+7\d{10}$" data-flag="kz">
-                            <img src="https://flagcdn.com/w40/kz.png" class="flag" alt="KZ"> Казахстан <span class="code">+7</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+995" data-mask="+995 (___) ___-___" data-pattern="^\+995\d{9}$" data-flag="ge">
-                            <img src="https://flagcdn.com/w40/ge.png" class="flag" alt="GE"> Грузия <span class="code">+995</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+373" data-mask="+373 (__) ___-___" data-pattern="^\+373\d{8}$" data-flag="md">
-                            <img src="https://flagcdn.com/w40/md.png" class="flag" alt="MD"> Молдова <span class="code">+373</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+371" data-mask="+371 (___) ___-__" data-pattern="^\+371\d{8}$" data-flag="lv">
-                            <img src="https://flagcdn.com/w40/lv.png" class="flag" alt="LV"> Латвия <span class="code">+371</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+370" data-mask="+370 (___) ___-__" data-pattern="^\+370\d{8}$" data-flag="lt">
-                            <img src="https://flagcdn.com/w40/lt.png" class="flag" alt="LT"> Литва <span class="code">+370</span>
-                        </div>
-                        <div class="country-picker__item" data-value="+372" data-mask="+372 (___) ___-__" data-pattern="^\+372\d{7,8}$" data-flag="ee">
-                            <img src="https://flagcdn.com/w40/ee.png" class="flag" alt="EE"> Эстония <span class="code">+372</span>
-                        </div>
-                    </div>
-                </div>
-                <input type="tel" id="phoneInput" name="phone" placeholder="+375 (__) ___-__-__" required>
-            </div>
-
-            <select name="service" required>
-                <option value="">Выберите услугу</option>
-                <option>Маникюр</option>
-                <option>Педикюр</option>
-                <option>Наращивание</option>
-                <option>Дизайн</option>
-            </select>
-            <input type="date" name="date" required>
-            <select name="time" required>
-                <option value="">Выберите время</option>
-                <option>10:00</option>
-                <option>12:00</option>
-                <option>14:00</option>
-                <option>16:00</option>
-                <option>18:00</option>
-            </select>
-            <button type="submit" class="btn btn--primary">Записаться</button>
-        </form>
-        <div id="formMessage" class="form-message"></div>
-    </div>
-</section>
-
 <footer id="contacts" class="footer">
     <div class="container">
         <p>📍 г. Москва, ул. Примерная, 1</p>
@@ -642,135 +296,15 @@ body {
     </div>
 </footer>
 
-<div class="modal" id="successModal">
-    <div class="modal__overlay" data-close-modal></div>
-    <div class="modal__content">
-        <div class="modal__icon">✓</div>
-        <h3>Вы записаны!</h3>
-        <p>Мы свяжемся с вами в ближайшее время для подтверждения.</p>
-        <button class="btn btn--primary" data-close-modal>Отлично</button>
-    </div>
-</div>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const FORMSPREE_URL = 'https://formspree.io/f/xwlpakbj';
-
-    const dateInput = document.querySelector('input[name="date"]');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
-
-    const form = document.getElementById('bookingForm');
-    const msg = document.getElementById('formMessage');
-    const modal = document.getElementById('successModal');
-
-    const picker = document.getElementById('countryPicker');
-    const countryBtn = document.getElementById('countryBtn');
-    const currentFlag = document.getElementById('currentFlag');
-    const currentCode = document.getElementById('currentCode');
-    const phoneInput = document.getElementById('phoneInput');
-
-    let currentCountry = {
-        value: '+375',
-        mask: '+375 (__) ___-__-__',
-        pattern: '^\\+375\\d{9}$',
-        flag: 'by'
-    };
-
-    countryBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        picker.classList.toggle('country-picker--open');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!picker.contains(e.target)) {
-            picker.classList.remove('country-picker--open');
-        }
-    });
-
-    document.querySelectorAll('.country-picker__item').forEach(item => {
-        item.addEventListener('click', () => {
-            currentCountry = {
-                value: item.dataset.value,
-                mask: item.dataset.mask,
-                pattern: item.dataset.pattern,
-                flag: item.dataset.flag
-            };
-            currentFlag.src = 'https://flagcdn.com/w40/' + currentCountry.flag + '.png';
-            currentFlag.alt = currentCountry.flag.toUpperCase();
-            currentCode.textContent = currentCountry.value;
-            phoneInput.placeholder = currentCountry.mask;
-            phoneInput.value = '';
-            phoneInput.focus();
-            picker.classList.remove('country-picker--open');
-        });
-    });
-
-    phoneInput.addEventListener('input', () => {
-        const code = currentCountry.value;
-        let digits = phoneInput.value.replace(/\D/g, '');
-        const codeDigits = code.replace('+', '');
-        if (digits.startsWith(codeDigits)) {
-            digits = digits.slice(codeDigits.length);
-        }
-        phoneInput.value = digits ? code + ' ' + digits : '';
-    });
-
-    fetch('https://ipapi.co/json/')
-        .then(r => r.json())
-        .then(data => {
-            const map = {
-                'BY': '+375', 'RU': '+7', 'UA': '+380', 'KZ': '+7',
-                'GE': '+995', 'MD': '+373', 'LV': '+371', 'LT': '+370', 'EE': '+372'
-            };
-            const code = map[data.country_code];
-            if (!code) return;
-            const target = [...document.querySelectorAll('.country-picker__item')]
-                .find(el => el.dataset.value === code);
-            if (target) target.click();
-        })
-        .catch(() => {});
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const pattern = new RegExp(currentCountry.pattern);
-        const phone = phoneInput.value.replace(/\s/g, '');
-
-        if (!pattern.test(phone)) {
-            msg.textContent = 'Проверьте номер телефона для выбранной страны';
-            msg.className = 'form-message error';
-            return;
-        }
-        msg.textContent = '';
-
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(FORMSPREE_URL, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
+    document.querySelectorAll('.service-item').forEach(item => {
+        const header = item.querySelector('.service-header');
+        header.addEventListener('click', () => {
+            document.querySelectorAll('.service-item').forEach(other => {
+                if (other !== item) other.classList.remove('service-item--open');
             });
-
-            if (response.ok) {
-                modal.classList.add('modal--visible');
-                form.reset();
-                phoneInput.placeholder = currentCountry.mask;
-            } else {
-                msg.textContent = 'Ошибка отправки. Позвоните нам.';
-                msg.className = 'form-message error';
-            }
-        } catch (err) {
-            msg.textContent = 'Ошибка соединения. Попробуйте ещё раз.';
-            msg.className = 'form-message error';
-            console.error(err);
-        }
-    });
-
-    document.querySelectorAll('[data-close-modal]').forEach(el => {
-        el.addEventListener('click', () => {
-            modal.classList.remove('modal--visible');
+            item.classList.toggle('service-item--open');
         });
     });
 });
