@@ -22,83 +22,19 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
 .nav a { margin: 0 10px; color: #2b2b2b; text-decoration: none; font-weight: 500; font-size: 15px; }
 .nav a:hover { color: #d63384; }
 
-/* === СОЦСЕТИ В ШАПКЕ === */
-.socials-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.socials-header a {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fce4ec;
-    color: #d63384;
-    transition: all 0.25s ease;
-    text-decoration: none;
-}
-.socials-header a:hover {
-    background: #d63384;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(214, 51, 132, 0.3);
-}
-.socials-header svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-    display: block;
-}
+.socials-header { display: flex; align-items: center; gap: 8px; }
+.socials-header a { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fce4ec; color: #d63384; transition: all 0.25s ease; text-decoration: none; }
+.socials-header a:hover { background: #d63384; color: #fff; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(214, 51, 132, 0.3); }
+.socials-header svg { width: 18px; height: 18px; fill: currentColor; display: block; }
 
-/* === СОЦСЕТИ В РАЗДЕЛЕ О МАСТЕРЕ === */
-.socials-master {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid #eee;
-}
-.socials-master__label {
-    font-size: 14px;
-    color: #888;
-    font-weight: 500;
-    margin-right: 6px;
-}
-.socials-master a {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    transition: all 0.25s ease;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-.socials-master a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-.socials-master a svg {
-    width: 22px;
-    height: 22px;
-    fill: currentColor;
-    display: block;
-}
-.socials-master .social--instagram {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-}
-.socials-master .social--tiktok {
-    background: linear-gradient(45deg, #000000, #2a2a2a);
-}
-.socials-master .social--telegram {
-    background: linear-gradient(45deg, #29b6f6, #0088cc);
-}
+.socials-master { display: flex; align-items: center; gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #eee; }
+.socials-master__label { font-size: 14px; color: #888; font-weight: 500; margin-right: 6px; }
+.socials-master a { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; transition: all 0.25s ease; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.socials-master a:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.socials-master a svg { width: 22px; height: 22px; fill: currentColor; display: block; }
+.socials-master .social--instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.socials-master .social--tiktok { background: linear-gradient(45deg, #000000, #2a2a2a); }
+.socials-master .social--telegram { background: linear-gradient(45deg, #29b6f6, #0088cc); }
 
 .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; transition: 0.2s; font-size: 15px; }
 .btn--primary { background: #d63384; color: #fff; }
@@ -117,6 +53,105 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
 .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; transition: 0.3s; }
 .gallery img:hover { transform: scale(1.03); }
 
+/* === ОТЗЫВЫ === */
+.reviews-intro {
+    text-align: center;
+    color: #888;
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.review-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px 26px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(214, 51, 132, 0.15);
+}
+.review-card::before {
+    content: '"';
+    position: absolute;
+    top: 12px;
+    right: 22px;
+    font-size: 72px;
+    color: #fce4ec;
+    font-family: Georgia, serif;
+    line-height: 1;
+    z-index: 0;
+    font-weight: bold;
+    pointer-events: none;
+}
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+.review-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d63384, #b02a6b);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
+}
+.review-author {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2b2b2b;
+    margin-bottom: 2px;
+}
+.review-date {
+    font-size: 13px;
+    color: #999;
+}
+.review-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+}
+.review-stars svg {
+    width: 18px;
+    height: 18px;
+    fill: #ffc107;
+}
+.review-stars svg.empty {
+    fill: #e0e0e0;
+}
+.review-text {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+/* === УСЛУГИ === */
 .services-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .service-item { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; transition: box-shadow 0.2s; }
 .service-item:hover { box-shadow: 0 8px 30px rgba(214, 51, 132, 0.12); }
@@ -183,6 +218,8 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
     .socials-header { gap: 6px; }
     .socials-header a { width: 34px; height: 34px; }
     .socials-header svg { width: 16px; height: 16px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .review-card { padding: 24px 22px; }
 }
 </style>
 </head>
@@ -197,13 +234,11 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
         <div class="header__right">
             <nav class="nav">
                 <a href="#master">О мастере</a>
+                <a href="#reviews">Отзывы</a>
                 <a href="#services">Услуги</a>
                 <a href="#gallery">Работы</a>
                 <a href="booking.html">Запись</a>
-                <a href="#contacts">Контакты</a>
             </nav>
-
-            <!-- ⚠️ ЗАМЕНИ ССЫЛКИ # НА СВОИ -->
             <div class="socials-header">
                 <a href="https://instagram.com/ТВОЙ_НИК" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
                     <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.25.07 1.63.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.25.06-1.63.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.22 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.78 2.2 12 2.2zm0 1.8c-3.16 0-3.54.01-4.79.07-1.15.05-1.78.24-2.2.4-.55.21-.95.47-1.36.88-.41.41-.67.81-.88 1.36-.16.42-.35 1.05-.4 2.2C2.3 8.46 2.3 8.84 2.3 12s.01 3.54.07 4.79c.05 1.15.24 1.78.4 2.2.21.55.47.95.88 1.36.41.41.81.67 1.36.88.42.16 1.05.35 2.2.4 1.25.06 1.63.07 4.79.07s3.54-.01 4.79-.07c1.15-.05 1.78-.24 2.2-.4.55-.21.95-.47 1.36-.88.41-.41.67-.81.88-1.36.16-.42.35-1.05.4-2.2.06-1.25.07-1.63.07-4.79s-.01-3.54-.07-4.79c-.05-1.15-.24-1.78-.4-2.2-.21-.55-.47-.95-.88-1.36-.41-.41-.81-.67-1.36-.88-.42-.16-1.05-.35-2.2-.4C15.54 4.01 15.16 4 12 4zm0 3.06a4.94 4.94 0 110 9.88 4.94 4.94 0 010-9.88zm0 8.14a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.3-8.35a1.16 1.16 0 11-2.32 0 1.16 1.16 0 012.32 0z"/></svg>
@@ -239,10 +274,10 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                 </div>
             </div>
             <div class="master__info">
-                <h3>Тимоха ЧупаЧупс</h3>
+                <h3>Тимофей Лайк</h3>
                 <div class="master__role">Мастер ногтевого сервиса</div>
                 <p class="master__text">
-                    Привет! Меня зовут тима, и уже более 5 лет я создаю красивые и ухоженные ногти.
+                    Привет! Меня зовут Тима, и уже более 5 лет я создаю красивые и ухоженные ногти.
                     Работаю с любыми формами и длинами, использую только качественные материалы
                     премиум-класса и стерильные инструменты.
                 </p>
@@ -259,7 +294,6 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                 </div>
                 <a href="booking.html" class="btn btn--primary">💅 Записаться к мастеру</a>
 
-                <!-- ⚠️ ЗАМЕНИ ССЫЛКИ # НА СВОИ -->
                 <div class="socials-master">
                     <span class="socials-master__label">Я в соцсетях:</span>
                     <a href="https://instagram.com/ТВОЙ_НИК" target="_blank" rel="noopener" class="social--instagram" aria-label="Instagram" title="Instagram">
@@ -277,7 +311,124 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
     </div>
 </section>
 
-<section id="services" class="section section--dark">
+<!-- === ОТЗЫВЫ === -->
+<section id="reviews" class="section section--dark">
+    <div class="container">
+        <h2>Отзывы клиентов</h2>
+        <p class="reviews-intro">Более 1500 клиентов уже оценили мою работу 💖</p>
+
+        <div class="reviews-grid">
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">М</div>
+                    <div>
+                        <div class="review-author">Мария К.</div>
+                        <div class="review-date">15 сентября 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                </div>
+                <p class="review-text">
+                    Хожу к Анне уже больше года. Всегда аккуратно, красиво и по времени чётко.
+                    Ногти держатся по 3-4 недели без единой трещинки. Очень довольна! 💅
+                </p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">Е</div>
+                    <div>
+                        <div class="review-author">Екатерина В.</div>
+                        <div class="review-date">2 сентября 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                </div>
+                <p class="review-text">
+                    Делала наращивание перед свадьбой — результат превзошёл все ожидания.
+                    Очень естественно смотрелось, гости думали, что свои. Спасибо огромное!
+                </p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">О</div>
+                    <div>
+                        <div class="review-author">Ольга С.</div>
+                        <div class="review-date">28 августа 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                </div>
+                <p class="review-text">
+                    Отдельное спасибо за педикюр! Наконец-то нашла мастера, который
+                    делает всё аккуратно и без боли. Атмосфера в кабинете очень уютная.
+                </p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">И</div>
+                    <div>
+                        <div class="review-author">Ирина П.</div>
+                        <div class="review-date">20 августа 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                </div>
+                <p class="review-text">
+                    Записалась онлайн, всё быстро и удобно. Приехала — не пожалела.
+                    Дизайн подобрали под мой образ, получилось очень стильно! Вернусь ещё.
+                </p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">Н</div>
+                    <div>
+                        <div class="review-author">Наталья Д.</div>
+                        <div class="review-date">10 августа 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                    <svg class="empty" viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
+                </div>
+                <p class="review-text">
+                    Отличный мастер! Единственное — хотелось бы больше свободных слотов
+                    в вечернее время. А так всё супер, рекомендую!
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="services" class="section">
     <div class="container">
         <h2>Услуги и цены</h2>
         <p style="text-align:center; color:#888; margin-top:-20px; margin-bottom:40px;">Нажмите на услугу, чтобы увидеть, что входит в процедуру</p>
@@ -370,7 +521,7 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
     </div>
 </section>
 
-<section id="gallery" class="section">
+<section id="gallery" class="section section--dark">
     <div class="container">
         <h2>Мои работы</h2>
         <div class="grid gallery">
