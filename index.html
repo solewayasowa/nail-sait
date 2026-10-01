@@ -53,124 +53,118 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
 .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; transition: 0.3s; }
 .gallery img:hover { transform: scale(1.03); }
 
-/* === ОТЗЫВЫ === */
-.reviews-top {
+/* === МОЙ КАБИНЕТ === */
+.studio-intro {
     text-align: center;
-    margin-top: -20px;
+    color: #666;
+    max-width: 700px;
+    margin: -20px auto 40px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+.studio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
     margin-bottom: 40px;
 }
-.reviews-intro {
-    color: #888;
-    font-size: 15px;
-    margin-bottom: 16px;
-}
-.reviews-cta {
-    display: inline-block;
-    padding: 10px 22px;
-    background: #fff;
-    color: #d63384;
-    border: 2px solid #d63384;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.2s;
-}
-.reviews-cta:hover {
-    background: #d63384;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(214, 51, 132, 0.3);
-}s
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-.review-card {
-    background: #fff;
-    border-radius: 18px;
-    padding: 28px 26px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+.studio-photo {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
-.review-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 35px rgba(214, 51, 132, 0.15);
+.studio-photo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(214, 51, 132, 0.2);
 }
-.review-card::before {
-    content: '"';
+.studio-photo img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.studio-photo:hover img {
+    transform: scale(1.05);
+}
+.studio-photo--big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.studio-photo--big img {
+    height: 100%;
+    min-height: 536px;
+}
+.studio-photo__caption {
     position: absolute;
-    top: 12px;
-    right: 22px;
-    font-size: 72px;
-    color: #fce4ec;
-    font-family: Georgia, serif;
-    line-height: 1;
-    z-index: 0;
-    font-weight: bold;
-    pointer-events: none;
-}
-.review-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 16px;
-    position: relative;
-    z-index: 1;
-}
-.review-avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #d63384, #b02a6b);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px 20px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
     color: #fff;
-    font-size: 20px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
-}
-.review-author {
-    font-size: 16px;
-    font-weight: 700;
-    color: #2b2b2b;
-    margin-bottom: 2px;
-}
-.review-date {
-    font-size: 13px;
-    color: #999;
-}
-.review-stars {
-    display: flex;
-    gap: 2px;
-    margin-bottom: 14px;
-    position: relative;
-    z-index: 1;
-}
-.review-stars svg {
-    width: 18px;
-    height: 18px;
-    fill: #ffc107;
-}
-.review-stars svg.empty {
-    fill: #e0e0e0;
-}
-.review-text {
-    color: #555;
     font-size: 15px;
-    line-height: 1.65;
-    position: relative;
-    z-index: 1;
-    flex: 1;
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }
+
+/* === ПРЕИМУЩЕСТВА КАБИНЕТА === */
+.studio-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.studio-feature {
+    background: #fce4ec;
+    border-radius: 14px;
+    padding: 24px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.studio-feature:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15);
+}
+.studio-feature__icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.studio-feature__text strong {
+    display: block;
+    font-size: 16px;
+    color: #2b2b2b;
+    margin-bottom: 4px;
+}
+.studio-feature__text span {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* === ОТЗЫВЫ === */
+.reviews-top { text-align: center; margin-top: -20px; margin-bottom: 40px; }
+.reviews-intro { color: #888; font-size: 15px; margin-bottom: 16px; }
+.reviews-cta { display: inline-block; padding: 10px 22px; background: #fff; color: #d63384; border: 2px solid #d63384; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.2s; }
+.reviews-cta:hover { background: #d63384; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(214, 51, 132, 0.3); }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+.review-card { background: #fff; border-radius: 18px; padding: 28px 26px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: transform 0.25s ease, box-shadow 0.25s ease; position: relative; display: flex; flex-direction: column; }
+.review-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(214, 51, 132, 0.15); }
+.review-card::before { content: '"'; position: absolute; top: 12px; right: 22px; font-size: 72px; color: #fce4ec; font-family: Georgia, serif; line-height: 1; z-index: 0; font-weight: bold; pointer-events: none; }
+.review-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; position: relative; z-index: 1; }
+.review-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #d63384, #b02a6b); color: #fff; font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3); }
+.review-author { font-size: 16px; font-weight: 700; color: #2b2b2b; margin-bottom: 2px; }
+.review-date { font-size: 13px; color: #999; }
+.review-stars { display: flex; gap: 2px; margin-bottom: 14px; position: relative; z-index: 1; }
+.review-stars svg { width: 18px; height: 18px; fill: #ffc107; }
+.review-stars svg.empty { fill: #e0e0e0; }
+.review-text { color: #555; font-size: 15px; line-height: 1.65; position: relative; z-index: 1; flex: 1; }
 
 /* === УСЛУГИ === */
 .services-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
@@ -198,6 +192,7 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
 .service-body__meta strong { color: #2b2b2b; }
 .service-body__btn { margin-top: 20px; display: inline-block; }
 
+/* === О МАСТЕРЕ === */
 .master { display: grid; grid-template-columns: 380px 1fr; gap: 50px; align-items: center; }
 .master__photo { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(214, 51, 132, 0.2); }
 .master__photo img { width: 100%; height: 480px; object-fit: cover; display: block; transition: transform 0.4s; }
@@ -225,6 +220,12 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
     .master__info h3 { font-size: 26px; }
     .master__features { grid-template-columns: 1fr; }
     .master__stats { flex-wrap: wrap; gap: 20px; }
+
+    .studio-grid { grid-template-columns: 1fr 1fr; }
+    .studio-photo--big { grid-column: span 2; grid-row: span 1; }
+    .studio-photo--big img { min-height: 320px; height: 320px; }
+    .studio-photo img { height: 220px; }
+    .studio-features { grid-template-columns: 1fr; }
 }
 @media (max-width: 700px) {
     .nav { display: none; }
@@ -241,6 +242,10 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
     .socials-header svg { width: 16px; height: 16px; }
     .reviews-grid { grid-template-columns: 1fr; }
     .review-card { padding: 24px 22px; }
+    .studio-grid { grid-template-columns: 1fr; }
+    .studio-photo--big { grid-column: span 1; }
+    .studio-photo--big img { min-height: 240px; height: 240px; }
+    .studio-photo img { height: 220px; }
 }
 </style>
 </head>
@@ -255,9 +260,9 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
         <div class="header__right">
             <nav class="nav">
                 <a href="#master">О мастере</a>
+                <a href="#studio">Кабинет</a>
                 <a href="#reviews">Отзывы</a>
                 <a href="#services">Услуги</a>
-                <a href="#gallery">Работы</a>
                 <a href="booking.html">Запись</a>
             </nav>
             <div class="socials-header">
@@ -290,15 +295,15 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
             <div class="master__photo">
                 <img src="images/master.jpg" alt="Мастер маникюра">
                 <div class="master__badge">
-                    <strong>Тимоха Паркур</strong>
+                    <strong>Анна Иванова</strong>
                     <span>Мастер ногтевого сервиса</span>
                 </div>
             </div>
             <div class="master__info">
-                <h3>Тимофей Лайк</h3>
+                <h3>Анна Иванова</h3>
                 <div class="master__role">Мастер ногтевого сервиса</div>
                 <p class="master__text">
-                    Привет! Меня зовут Тима, и уже более 5 лет я создаю красивые и ухоженные ногти.
+                    Привет! Меня зовут Анна, и уже более 5 лет я создаю красивые и ухоженные ногти.
                     Работаю с любыми формами и длинами, использую только качественные материалы
                     премиум-класса и стерильные инструменты.
                 </p>
@@ -314,7 +319,6 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <div class="master__stat"><div class="master__stat-num">10+</div><div class="master__stat-label">курсов и обучений</div></div>
                 </div>
                 <a href="booking.html" class="btn btn--primary">💅 Записаться к мастеру</a>
-
                 <div class="socials-master">
                     <span class="socials-master__label">Я в соцсетях:</span>
                     <a href="https://instagram.com/ТВОЙ_НИК" target="_blank" rel="noopener" class="social--instagram" aria-label="Instagram" title="Instagram">
@@ -332,23 +336,75 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
     </div>
 </section>
 
-<!-- === ОТЗЫВЫ === -->
-<section id="reviews" class="section section--dark">
+<!-- === МОЙ КАБИНЕТ === -->
+<section id="studio" class="section section--dark">
+    <div class="container">
+        <h2>Мой кабинет</h2>
+        <p class="studio-intro">
+            Уютное и стерильное пространство, где приятно провести время за процедурой.
+            Здесь всё продумано для вашего комфорта — от мягкого кресла до чашки чая.
+        </p>
+
+        <div class="studio-grid">
+            <div class="studio-photo studio-photo--big">
+                <img src="images/studio1.jpg" alt="Кабинет — общий вид">
+                <div class="studio-photo__caption">Главная зона</div>
+            </div>
+            <div class="studio-photo">
+                <img src="images/studio2.jpg" alt="Рабочее место">
+                <div class="studio-photo__caption">Рабочее место</div>
+            </div>
+            <div class="studio-photo">
+                <img src="images/studio3.jpg" alt="Зона стерилизации">
+                <div class="studio-photo__caption">Стерилизация</div>
+            </div>
+            <div class="studio-photo">
+                <img src="images/studio4.jpg" alt="Детали интерьера">
+                <div class="studio-photo__caption">Детали</div>
+            </div>
+            <div class="studio-photo">
+                <img src="images/studio5.jpg" alt="Зона ожидания">
+                <div class="studio-photo__caption">Зона ожидания</div>
+            </div>
+        </div>
+
+        <div class="studio-features">
+            <div class="studio-feature">
+                <div class="studio-feature__icon">🧼</div>
+                <div class="studio-feature__text">
+                    <strong>Полная стерилизация</strong>
+                    <span>Все инструменты обрабатываются в сухожаре и ультрафиолете после каждого клиента</span>
+                </div>
+            </div>
+            <div class="studio-feature">
+                <div class="studio-feature__icon">🌸</div>
+                <div class="studio-feature__text">
+                    <strong>Уютная атмосфера</strong>
+                    <span>Мягкое кресло, приятная музыка, ароматный чай и кофе — всё для вашего комфорта</span>
+                </div>
+            </div>
+            <div class="studio-feature">
+                <div class="studio-feature__icon">📍</div>
+                <div class="studio-feature__text">
+                    <strong>Удобное расположение</strong>
+                    <span>5 минут от метро, есть парковка. Точный адрес пришлю после подтверждения записи</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="reviews" class="section">
     <div class="container">
         <h2>Отзывы клиентов</h2>
-        <p class="reviews-intro">Более 1500 клиентов уже оценили мою работу 💖</p>
- <a href="review.html" class="reviews-cta">✍️ Оставить отзыв</a>
+        <div class="reviews-top">
+            <p class="reviews-intro">Более 1500 клиентов уже оценили мою работу 💖</p>
+            <a href="review.html" class="reviews-cta">✍️ Оставить отзыв</a>
+        </div>
 
         <div class="reviews-grid">
-
             <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar">М</div>
-                    <div>
-                        <div class="review-author">Мария К.</div>
-                        <div class="review-date">15 сентября 2026</div>
-                    </div>
-                </div>
+                <div class="review-header"><div class="review-avatar">М</div><div><div class="review-author">Мария К.</div><div class="review-date">15 сентября 2026</div></div></div>
                 <div class="review-stars">
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
@@ -356,20 +412,11 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                 </div>
-                <p class="review-text">
-                    Хожу к Анне уже больше года. Всегда аккуратно, красиво и по времени чётко.
-                    Ногти держатся по 3-4 недели без единой трещинки. Очень довольна! 💅
-                </p>
+                <p class="review-text">Хожу к Анне уже больше года. Всегда аккуратно, красиво и по времени чётко. Ногти держатся по 3-4 недели без единой трещинки. Очень довольна! 💅</p>
             </div>
 
             <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar">Е</div>
-                    <div>
-                        <div class="review-author">Екатерина В.</div>
-                        <div class="review-date">2 сентября 2026</div>
-                    </div>
-                </div>
+                <div class="review-header"><div class="review-avatar">Е</div><div><div class="review-author">Екатерина В.</div><div class="review-date">2 сентября 2026</div></div></div>
                 <div class="review-stars">
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
@@ -377,20 +424,11 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                 </div>
-                <p class="review-text">
-                    Делала наращивание перед свадьбой — результат превзошёл все ожидания.
-                    Очень естественно смотрелось, гости думали, что свои. Спасибо огромное!
-                </p>
+                <p class="review-text">Делала наращивание перед свадьбой — результат превзошёл все ожидания. Очень естественно смотрелось, гости думали, что свои. Спасибо огромное!</p>
             </div>
 
             <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar">О</div>
-                    <div>
-                        <div class="review-author">Ольга С.</div>
-                        <div class="review-date">28 августа 2026</div>
-                    </div>
-                </div>
+                <div class="review-header"><div class="review-avatar">О</div><div><div class="review-author">Ольга С.</div><div class="review-date">28 августа 2026</div></div></div>
                 <div class="review-stars">
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
@@ -398,20 +436,11 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                 </div>
-                <p class="review-text">
-                    Отдельное спасибо за педикюр! Наконец-то нашла мастера, который
-                    делает всё аккуратно и без боли. Атмосфера в кабинете очень уютная.
-                </p>
+                <p class="review-text">Отдельное спасибо за педикюр! Наконец-то нашла мастера, который делает всё аккуратно и без боли. Атмосфера в кабинете очень уютная.</p>
             </div>
 
             <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar">И</div>
-                    <div>
-                        <div class="review-author">Ирина П.</div>
-                        <div class="review-date">20 августа 2026</div>
-                    </div>
-                </div>
+                <div class="review-header"><div class="review-avatar">И</div><div><div class="review-author">Ирина П.</div><div class="review-date">20 августа 2026</div></div></div>
                 <div class="review-stars">
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
@@ -419,20 +448,11 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                 </div>
-                <p class="review-text">
-                    Записалась онлайн, всё быстро и удобно. Приехала — не пожалела.
-                    Дизайн подобрали под мой образ, получилось очень стильно! Вернусь ещё.
-                </p>
+                <p class="review-text">Записалась онлайн, всё быстро и удобно. Приехала — не пожалела. Дизайн подобрали под мой образ, получилось очень стильно! Вернусь ещё.</p>
             </div>
 
             <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar">Н</div>
-                    <div>
-                        <div class="review-author">Наталья Д.</div>
-                        <div class="review-date">10 августа 2026</div>
-                    </div>
-                </div>
+                <div class="review-header"><div class="review-avatar">Н</div><div><div class="review-author">Наталья Д.</div><div class="review-date">10 августа 2026</div></div></div>
                 <div class="review-stars">
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
@@ -440,17 +460,13 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                     <svg class="empty" viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.9 1.6 7.1L12 17.7 5.8 21.5l1.6-7.1L2 9.5l7.1-.6L12 2z"/></svg>
                 </div>
-                <p class="review-text">
-                    Отличный мастер! Единственное — хотелось бы больше свободных слотов
-                    в вечернее время. А так всё супер, рекомендую!
-                </p>
+                <p class="review-text">Отличный мастер! Единственное — хотелось бы больше свободных слотов в вечернее время. А так всё супер, рекомендую!</p>
             </div>
-
         </div>
     </div>
 </section>
 
-<section id="services" class="section">
+<section id="services" class="section section--dark">
     <div class="container">
         <h2>Услуги и цены</h2>
         <p style="text-align:center; color:#888; margin-top:-20px; margin-bottom:40px;">Нажмите на услугу, чтобы увидеть, что входит в процедуру</p>
@@ -539,18 +555,6 @@ body { font-family: 'Segoe UI', Roboto, sans-serif; color: #2b2b2b; line-height:
                     <a href="booking.html" class="btn btn--primary service-body__btn">Записаться</a>
                 </div></div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section id="gallery" class="section section--dark">
-    <div class="container">
-        <h2>Мои работы</h2>
-        <div class="grid gallery">
-            <img src="images/work1.jpg" alt="Работа 1">
-            <img src="images/work2.jpg" alt="Работа 2">
-            <img src="images/work3.jpg" alt="Работа 3">
-            <img src="images/work4.jpg" alt="Работа 4">
         </div>
     </div>
 </section>
